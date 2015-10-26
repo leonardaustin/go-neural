@@ -6,7 +6,7 @@ go-neural
 ```
   go get github.com/NOX73/go-neural
   go get github.com/NOX73/go-neural/persist
-  go get github.com/NOX73/go-neural/lern
+  go get github.com/NOX73/go-neural/learn
 ```
 
 # Neural Network
@@ -35,7 +35,7 @@ Create new network:
 Save to file:
 
 ```go
-  import "github.com/NOX73/gr-neural-persist"
+  import "github.com/NOX73/or-neural/persist"
 
   persist.ToFile("/path/to/file.json", network)
 ```
@@ -43,39 +43,39 @@ Save to file:
 Load from file:
 
 ```go
-  import "github.com/NOX73/gr-neural-persist"
+  import "github.com/NOX73/go-neural/persist"
 
   network := persist.FromFile("/path/to/file.json")
 ```
 
-# Lerning
+# Learning
 
 ```go
-  import "github.com/NOX73/gr-neural-lern"
+  import "github.com/NOX73/go-neural/learn"
 
   var input, idealOutput []float64
-  // Lerning speed [0..1]
+  // Learning speed [0..1]
   var speed float64
 
-  lern.Lern(network, in, idealOut, speed)
+  learn.Learn(network, in, idealOut, speed)
 ```
 
-You can get estimate of lerning quality:
+You can get estimate of learning quality:
 
 ```go
-  e := lern.Evaluation(network, in, idealOut)
+  e := learn.Evaluation(network, in, idealOut)
 ```
 
 # Engine 
 
-For concurrent lern, calculate & dump neural network.
+For concurrent learn, calculate & dump neural network.
 
 ```go
 	network := neural.NewNetwork(2, []int{2, 2})
 	engine := New(network)
 	engine.Start()
 
-	engine.Lern([]float64{1, 2}, []float64{3, 3}, 0.1)
+	engine.Learn([]float64{1, 2}, []float64{3, 3}, 0.1)
 
 	out := engine.Calculate([]float64{1, 2})
 ```
